@@ -1,25 +1,23 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 include ActionController::RespondWith
 
-RSpec.describe "Use authentication", type: :request do
+RSpec.describe 'Use authentication', type: :request do
   let(:new_user_params) do
-    { email: "email@gmail.com",
-      password: "password",
-      name: "Vitor",
-      nickname: "Pontes"
-    }
+    { email: 'email@gmail.com',
+      password: 'password',
+      name: 'Vitor',
+      nickname: 'Pontes' }
   end
 
   let(:current_user) { User.create(email: 'email@gmail.com', name: 'Vitor', nickname: 'Pontes', password: 'password') }
   let(:current_user_params) do
     { email: current_user.email,
-      password: 'password',
-    }
+      password: 'password' }
   end
 
   let(:user_headers) { { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' } }
-
-
 
   it 'creates user' do
     post user_registration_path, params: new_user_params
