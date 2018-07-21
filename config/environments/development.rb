@@ -35,6 +35,14 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # Mailcatcher
+  # To use this locally, install mailcatcher gem (`gem install mailcatcher`)
+  # Start mailcatcher from command line (`mailcatcher`) and you can start
+  # sending emails through your local interface
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
