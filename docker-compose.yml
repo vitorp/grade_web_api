@@ -1,0 +1,26 @@
+version: '3'
+services:
+  web:
+    build:
+      dockerfile:  ./docker/rails.dockerfile
+      context: .
+    image: vitorp/rails
+    container_name: grade-web-api
+    ports:
+      - "3000:3000"
+    networks:
+      - grade-web-api-network
+    depends_on:
+      - db
+    volumes:
+      - ".:/webapp"
+  db:
+    image: postgres:latest
+    container_name: meu-postgres
+    volumes:
+      - "./db-data:/var/lib/postgresql/data"
+    networks:
+      - grade-web-api-network
+networks:
+  grade-web-api-network:
+    driver: bridge
