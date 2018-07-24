@@ -1,5 +1,10 @@
 FROM ruby:2.5.1-alpine3.7
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+MAINTAINER Vitor Pontes
+
+RUN apk update && apk add nodejs build-base libxml2-dev libxslt-dev \
+    sqlite sqlite-dev sqlite-libs \
+    postgresql postgresql-dev postgresql-libs
+
 RUN mkdir /webapp
 WORKDIR /webapp
 COPY Gemfile /webapp/Gemfile

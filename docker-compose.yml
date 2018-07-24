@@ -14,9 +14,12 @@ services:
       - db
     volumes:
       - ".:/webapp"
+    entrypoint: /bin/sh lib/docker-entrypoint-dev.sh
   db:
     image: postgres:latest
     container_name: meu-postgres
+    environment:
+      PG_RUNDIR: /tmp/
     volumes:
       - "./db-data:/var/lib/postgresql/data"
     networks:
