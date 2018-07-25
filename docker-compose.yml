@@ -2,7 +2,7 @@ version: '3'
 services:
   web:
     build:
-      dockerfile:  ./docker/rails.dockerfile
+      dockerfile:  ./docker/Dockerfile.web
       context: .
     image: vitorp/rails
     container_name: grade-web-api
