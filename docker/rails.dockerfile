@@ -11,4 +11,4 @@ COPY Gemfile /webapp/Gemfile
 COPY Gemfile.lock /webapp/Gemfile.lock
 RUN bundle install
 COPY . /webapp
-CMD rails s -p 3000 -b 0.0.0.0
+CMD bundle exec puma -C config/puma.rb
