@@ -5,10 +5,18 @@ RUN apk update && apk add nodejs build-base libxml2-dev libxslt-dev \
     sqlite sqlite-dev sqlite-libs \
     postgresql postgresql-dev postgresql-libs
 
-RUN mkdir /webapp
-WORKDIR /webapp
-COPY Gemfile /webapp/Gemfile
-COPY Gemfile.lock /webapp/Gemfile.lock
+ENV APP_HOME /app/user
+RUN mkdir -p $APP_HOME
+RUN mkdir -p $APP_HOME/tmp
+WORKDIR $APP_HOME
+
+ADD ./Gemfile $APP_HOME/
+ADD ./Gemfile.lock $APP_HOME/
 RUN bundle install
-COPY . /webapp
+
+# Run the image as a non-root user
+RUN adduser -D gradeapi
+USER gradeapi
+
+ADD . $APP_HOME
 CMD bundle exec puma -C config/puma.rb

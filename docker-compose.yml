@@ -14,7 +14,7 @@ services:
       - db
     volumes:
       - ".:/webapp"
-    entrypoint: /bin/sh lib/docker-entrypoint-dev.sh
+    # entrypoint: /bin/sh lib/docker-entrypoint-dev.sh
   db:
     image: postgres:latest
     container_name: meu-postgres

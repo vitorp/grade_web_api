@@ -38,13 +38,14 @@ public/system
 coverage/
 spec/tmp
 **.orig
-
 .bundle
 
 .ruby-version
 .ruby-gemset
 
 .rvmrc
+# Database volume
+/db-data
 
 # if using bower-rails ignore default bower_components path bower.json files
 vendor/assets/bower_components
