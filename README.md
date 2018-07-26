@@ -6,6 +6,9 @@
 ## Requirements
 Docker is required to run this project
 
+## Testing
+The following comand runs rspec inside a docker container:
+`docker-compose run --entrypoint "/bin/sh -c" web rspec`
 ## Pushing image to Heroku
 `heroku container:push web --recursive --context-path .`
 Since we keep dockerfile in another directory we need to use the recursive flag. When using the `recursive` flag we need to set the context with the `context-path` flag

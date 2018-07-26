@@ -7,7 +7,6 @@ RUN apk update && apk add nodejs build-base libxml2-dev libxslt-dev \
 
 ENV APP_HOME /app/user
 RUN mkdir -p $APP_HOME
-RUN mkdir -p $APP_HOME/tmp
 WORKDIR $APP_HOME
 
 ADD ./Gemfile $APP_HOME/

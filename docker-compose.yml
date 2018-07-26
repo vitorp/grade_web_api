@@ -13,8 +13,8 @@ services:
     depends_on:
       - db
     volumes:
-      - ".:/webapp"
-    # entrypoint: /bin/sh lib/docker-entrypoint-dev.sh
+      - ".:/app/user"
+    entrypoint: /bin/sh lib/docker-entrypoint-dev.sh
   db:
     image: postgres:latest
     container_name: meu-postgres
