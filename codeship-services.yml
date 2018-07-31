@@ -14,7 +14,8 @@ db:
   image: postgres:latest
   environment:
     POSTGRES_USER: gradewebapi
-dockercfg-generator:
-  image: codeship/heroku-dockercfg-generator
-  add_docker: true
-  encrypted_env_file: web.env.encrypted
+herokudeployment:
+  image: codeship/heroku-deployment
+  encrypted_env_file: heroku-deployment.env.encrypted
+  volumes:
+    - ./:/deploy

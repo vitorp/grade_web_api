@@ -6,12 +6,13 @@
   - name: rubocop
     service: web
     command: rubocop
-- name: Push
-  service: web
-  type: push
-  image_name: registry.heroku.com/grade-web-api/web
-  registry: registry.heroku.com
-  dockercfg_service: dockercfg-generator
+- type: serial
+  tag: master
+  service: herokudeployment
+  steps:
+      - command: heroku container:login
+      - command: heroku container:push web --recursive --context-path .
+      - command: heroku container:release web
 # - name: migrate
 #   tag: master
 #   service: codeship-heroku-deployment
