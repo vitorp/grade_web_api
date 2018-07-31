@@ -6,10 +6,12 @@
   - name: rubocop
     service: web
     command: rubocop
-# - name: deploy
-#   tag: master
-#   service: codeship-heroku-deployment
-#   command: codeship_heroku deploy /deploy ruby-rails-todoapp
+- name: Push
+  service: web
+  type: push
+  image_name: registry.heroku.com/grade-web-api/web
+  registry: registry.heroku.com
+  dockercfg_service: dockercfg-generator
 # - name: migrate
 #   tag: master
 #   service: codeship-heroku-deployment
