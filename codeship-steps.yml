@@ -10,9 +10,11 @@
   tag: master
   service: herokudeployment
   steps:
-      - command: heroku container:login
-      - command: heroku container:push web --recursive --context-path .
-      - command: heroku container:release web
+      - command: docker tag vitorp/rails registry.heroku.com/grade-web-api/web
+      - command: docker login --username=_ --password="$HEROKU_API_KEY" registry.heroku.com
+      - command: docker push registry.heroku.com/grade-web-api/web
+      - command: ./deploy/bin/heroku-container-release.sh
+
 # - name: migrate
 #   tag: master
 #   service: codeship-heroku-deployment
