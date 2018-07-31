@@ -8,6 +8,7 @@ web:
     - db
   environment:
     DATABASE_URL: db
+    RAILS_ENV: test
 db:
   image: postgres:latest
   environment:
