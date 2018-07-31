@@ -16,11 +16,11 @@ db:
     POSTGRES_USER: gradewebapi
 herokudeployment:
   add_docker: true
+  cached: true
   build:
     image: vitorp/docker-deploy
     context: .
     dockerfile: ./docker/Dockerfile.deploy
-  image:
   encrypted_env_file: web.env.encrypted
   volumes:
     - ./:/deploy
