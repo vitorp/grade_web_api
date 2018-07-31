@@ -13,9 +13,5 @@ ADD ./Gemfile $APP_HOME/
 ADD ./Gemfile.lock $APP_HOME/
 RUN bundle install
 
-# Run the image as a non-root user
-RUN adduser -D gradeapi
-USER gradeapi
-
 ADD . $APP_HOME
 CMD bundle exec puma -C config/puma.rb

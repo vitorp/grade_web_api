@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   def members_only
     render json: {
       data: {
-        message: "Welcome #{current_user.name}",
-        user:    { name: current_user.name, nickname: current_user.nickname, email: current_user.email}
+        message: "Welcom #{current_user.name}",
+        user:    {name: current_user.name, nickname: current_user.nickname, email: current_user.email}
       }
     }, status: :ok
   end
