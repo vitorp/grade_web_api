@@ -3,17 +3,14 @@
   - name: rspec
     service: web
     command: bin/ci rspec
-  - name: rubocop
-    service: web
-    command: rubocop
+  # - name: rubocop
+  #   service: web
+  #   command: rubocop
 - type: serial
   tag: master
   service: herokudeployment
   steps:
-      - command: docker tag vitorp/rails registry.heroku.com/grade-web-api/web
-      - command: docker login --username=_ --password="$HEROKU_API_KEY" registry.heroku.com
-      - command: docker push registry.heroku.com/grade-web-api/web
-      - command: ./deploy/bin/heroku-container-release.sh
+      - command: sh ./deploy/bin/heroku-container-release.sh
 
 # - name: migrate
 #   tag: master

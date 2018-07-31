@@ -15,7 +15,8 @@ db:
   environment:
     POSTGRES_USER: gradewebapi
 herokudeployment:
-  image: codeship/heroku-deployment
+  add_docker: true
+  image: docker:latest
   encrypted_env_file: web.env.encrypted
   volumes:
     - ./:/deploy
