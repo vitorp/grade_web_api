@@ -2,13 +2,14 @@ web:
   build:
     image: vitorp/rails
     context: .
-    dockerfile:  ./docker/Dockerfile.web
+    dockerfile: ./docker/Dockerfile.web
   cached: true
   depends_on:
     - db
   environment:
     DATABASE_URL: db
     RAILS_ENV: test
+  encrypted_env_file: web.env.encrypted
 db:
   image: postgres:latest
   environment:
