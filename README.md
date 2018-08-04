@@ -4,7 +4,25 @@
   2.5.1
 
 ## Requirements
-Docker is required to run this project
+Docker and Docker Compose are required to run this project
+
+## Generating environment
+
+To build project image run:
+
+`docker-compose build`
+
+To generate secret hash for env file run:
+
+`docker-compose run --entrypoint "/bin/sh -c" web "bundle exec rake secret"`
+
+And create a .env file with the result from above command in this fashion:
+
+`DEVISE_SECRET_KEY = [ YOUR_SECRET_KEY_HERE ]`
+
+To run project, simply run:
+
+`docker-compose up`
 
 ## Testing
 The following comand runs rspec inside a docker container:
@@ -24,7 +42,6 @@ Since we keep dockerfile in a nested directory we need to use the recursive flag
 After pushing the image we just need it to release it with:
 
 `heroku container:release web`
-
 
 
 This README would normally document whatever steps are necessary to get the
